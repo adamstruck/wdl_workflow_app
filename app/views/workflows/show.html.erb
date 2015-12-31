@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Wdl source:</strong>
+  <%= @workflow.wdl_source %>
+</p>
+
+<p>
+  <strong>Is valid:</strong>
+  <%= @workflow.is_valid %>
+</p>
+
+<p>
+  <strong>Html:</strong>
+  <%= @workflow.html %>
+</p>
+
+<p>
+  <strong>Inputs:</strong>
+  <%= @workflow.inputs %>
+</p>
+
+<p>
+  <strong>Options:</strong>
+  <%= @workflow.options %>
+</p>
+
+<%= link_to 'Edit', edit_workflow_path(@workflow) %> |
+<%= link_to 'Back', workflows_path %>
