@@ -1,6 +1,6 @@
 class WorkflowsController < ApplicationController
   before_action :set_workflow, only: [:show, :edit, :update, :destroy]
-
+  
   # GET /workflows
   # GET /workflows.json
   def index
@@ -18,7 +18,7 @@ class WorkflowsController < ApplicationController
   end
 
   # GET /workflows/1/edit
-  def edit
+  def edit   
   end
 
   # POST /workflows
@@ -28,6 +28,7 @@ class WorkflowsController < ApplicationController
 
     respond_to do |format|
       if @workflow.save
+        ValidateWorkflowWorker.perform_async(@workflow.id)
         format.html { redirect_to @workflow, notice: 'Workflow was successfully created.' }
         format.json { render :show, status: :created, location: @workflow }
       else
@@ -42,6 +43,7 @@ class WorkflowsController < ApplicationController
   def update
     respond_to do |format|
       if @workflow.update(workflow_params)
+        ValidateWorkflowWorker.perform_async(@workflow.id)
         format.html { redirect_to @workflow, notice: 'Workflow was successfully updated.' }
         format.json { render :show, status: :ok, location: @workflow }
       else
