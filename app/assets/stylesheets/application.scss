@@ -10,7 +10,11 @@
 @import "bootstrap";
 
 // Bootstrap body padding for fixed navbar
-body { padding-top: 60px; }
+body { padding-top: 60px;
+       padding-bottom: 10px;
+       padding-left: 10px;
+       padding-right: 10px;       
+     }
 
 // And finally bootswatch style itself
 @import "bootswatch/cerulean/bootswatch";
