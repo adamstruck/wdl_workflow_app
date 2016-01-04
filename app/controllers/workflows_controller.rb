@@ -29,6 +29,7 @@ class WorkflowsController < ApplicationController
     respond_to do |format|
       if @workflow.save
         ValidateWorkflowWorker.perform_async(@workflow.id)
+        CreateWorkflowHtmlWorker.perform_async(@workflow.id)
         format.html { redirect_to @workflow, notice: 'Workflow was successfully created.' }
         format.json { render :show, status: :created, location: @workflow }
       else
@@ -44,6 +45,7 @@ class WorkflowsController < ApplicationController
     respond_to do |format|
       if @workflow.update(workflow_params)
         ValidateWorkflowWorker.perform_async(@workflow.id)
+        CreateWorkflowHtmlWorker.perform_async(@workflow.id)
         format.html { redirect_to @workflow, notice: 'Workflow was successfully updated.' }
         format.json { render :show, status: :ok, location: @workflow }
       else
