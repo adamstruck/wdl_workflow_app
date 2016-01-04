@@ -1,3 +1,4 @@
+
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Available Workflows</h1>
@@ -14,12 +15,16 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody style='white-space: pre'>
     <% @workflows.each do |workflow| %>
       <tr>
         <td><%= workflow.wdl_source %></td>
         <td><%= workflow.is_valid %></td>
-        <td style='white-space: pre'><%= workflow.html.html_safe %></td>
+        <% if workflow.html.nil? %>
+          <td><%= workflow.html %></td>
+        <% else %>
+          <td><%= workflow.html.html_safe %></td>
+        <% end %>
         <td><%= workflow.inputs %></td>
         <td><%= workflow.options %></td>
         <td><%= link_to 'Show', workflow %></td>

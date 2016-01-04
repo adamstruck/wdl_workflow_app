@@ -2,29 +2,40 @@
 
 <p>
   <strong>Wdl source:</strong>
-  <%= @workflow.wdl_source %>
+  <pre><%= @workflow.wdl_source %></pre>
 </p>
 
 <p>
   <strong>Is valid:</strong>
-  <%= @workflow.is_valid %>
+  <pre><%= @workflow.is_valid %></pre>
 </p>
 
 <p>
   <strong>Html:</strong>
-  <div style='white-space: pre'>
-  <%= @workflow.html.html_safe %>
-  </div>
+    <% if @workflow.html.nil? %>
+      <pre><%= @workflow.html %></pre>
+    <% else %>
+      <pre><%= @workflow.html.html_safe %></pre>
+    <% end %>
+  
 </p>
 
 <p>
   <strong>Inputs:</strong>
-  <%= @workflow.inputs %>
+  <% if @workflow.inputs == "{}" %>
+    <pre><%= @workflow.inputs %></pre>
+  <% else %>
+   <pre><%= JSON.pretty_generate(JSON.parse(@workflow.inputs.to_json)) %></pre>
+  <% end %>
 </p>
 
 <p>
   <strong>Options:</strong>
-  <%= @workflow.options %>
+  <% if @workflow.options == "{}" %>
+    <pre><%= @workflow.options %></pre>
+  <% else %>
+   <pre><%= JSON.pretty_generate(JSON.parse(@workflow.options.to_json)) %></pre>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_workflow_path(@workflow), class: 'btn btn-primary'%>

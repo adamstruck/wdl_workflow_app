@@ -36,6 +36,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# gem 'awesome_print', '~> 1.6.1'
+gem 'json', '~> 1.8.3'
+
+# Used for background worker tasks
 gem 'pg', '~> 0.18.4'
 gem 'sidekiq', '~> 4.0.1'
 
