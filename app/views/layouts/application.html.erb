@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>WorkflowApp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>WorkflowApp</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">        
+        <div class="navbar-header">        
+          <a href="/workflows" class="navbar-brand">Workflows</a>
+          <!-- Collect the nav links, forms, and other content for toggling -->
 
-<%= yield %>
+          <ul class="nav navbar-nav">           
+            <li><a href="#" onclick="javascript:history.back()">Back</a></li>
+            <li><a href="#">Top</a></li>
+          </ul>
 
-</body>
+        </div>
+      </div>
+    </nav>
+    <%= yield %>
+
+  </body>
 </html>

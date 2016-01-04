@@ -7,6 +7,8 @@ gem 'rails', '4.2.5'
 gem 'sqlite3'
 # Use bootstrap
 gem 'bootstrap-sass', '~> 3.3.6'
+# Use bootswatch-rails for free theme
+gem 'bootswatch-rails', '~> 3.3.5'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
