@@ -19,7 +19,7 @@
       <tr>
         <td><%= workflow.wdl_source %></td>
         <td><%= workflow.is_valid %></td>
-        <td><%= workflow.html.html_safe %></td>
+        <td style='white-space: pre'><%= workflow.html.html_safe %></td>
         <td><%= workflow.inputs %></td>
         <td><%= workflow.options %></td>
         <td><%= link_to 'Show', workflow %></td>
