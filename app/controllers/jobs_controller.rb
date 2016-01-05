@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: [:show, :edit, :update, :destroy]
+  before_action :set_job, only: [:show, :update, :destroy]
 
   # GET /jobs
   # GET /jobs.json
@@ -15,11 +15,7 @@ class JobsController < ApplicationController
   # GET /jobs/new
   def new
     @job = Job.new
-  end
-
-  # GET /jobs/1/edit
-  def edit
-  end
+  end  
 
   # POST /jobs
   # POST /jobs.json
