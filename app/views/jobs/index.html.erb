@@ -5,7 +5,7 @@
 <table class="table table-striped table-hover">
   <thead>
     <tr>
-      <th>Wdl</th>
+      <th>Workflow</th>
       <th>Inputs</th>
       <th>Options</th>
       <th>Run at</th>
@@ -18,7 +18,7 @@
   <tbody style='white-space: pre'>
     <% @jobs.each do |job| %>
       <tr>
-        <td><%= job.wdl_id %></td>
+        <td><%= job.workflow_id %></td>
         <td><%= job.inputs %></td>
         <td><%= job.options %></td>
         <td><%= job.run_at %></td>
