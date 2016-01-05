@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
-  resources :jobs
+  
   get 'welcome/index'
 
-  resources :workflows
+  resources :workflows do
+    resources :jobs, shallow: true
+  end
+
+  resources :jobs, only: [:index]
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

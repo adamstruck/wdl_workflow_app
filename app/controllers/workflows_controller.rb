@@ -1,6 +1,6 @@
 class WorkflowsController < ApplicationController
   before_action :set_workflow, only: [:show, :edit, :update, :destroy]
-  
+
   # GET /workflows
   # GET /workflows.json
   def index
@@ -18,13 +18,16 @@ class WorkflowsController < ApplicationController
   end
 
   # GET /workflows/1/edit
-  def edit   
+  def edit
   end
 
   # POST /workflows
   # POST /workflows.json
   def create
     @workflow = Workflow.new(workflow_params)
+
+    @workflow.options = clean_workflow_options
+    @workflow.tags = clean_workflow_tags
 
     respond_to do |format|
       if @workflow.save
@@ -43,8 +46,13 @@ class WorkflowsController < ApplicationController
   # PATCH/PUT /workflows/1
   # PATCH/PUT /workflows/1.json
   def update
-    respond_to do |format|
+    respond_to do |format|    
       if @workflow.update(workflow_params)
+        # Clean params
+        @workflow.options = clean_workflow_options
+        @workflow.tags = clean_workflow_tags
+        @workflow.save
+        # Start workers
         ValidateWorkflowWorker.perform_async(@workflow.id)
         CreateWorkflowHtmlWorker.perform_async(@workflow.id)
         CreateWorkflowInputsTemplateWorker.perform_async(@workflow.id)        
@@ -76,5 +84,21 @@ class WorkflowsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def workflow_params
       params.require(:workflow).permit(:name, :tags, :wdl_source, :options)
+    end
+
+    def clean_workflow_options
+      begin
+        JSON.parse(params['workflow']['options'])
+      rescue
+        {}
+      end
+    end
+
+    def clean_workflow_tags
+      begin
+        params['workflow']['tags'].split(",").map(&:strip)
+      rescue
+        []
+      end
     end
 end

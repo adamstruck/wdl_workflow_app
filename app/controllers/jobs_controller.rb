@@ -1,7 +1,8 @@
 class JobsController < ApplicationController
+
   before_action :set_job, only: [:show, :update, :destroy]
 
-  # GET /jobs
+    # GET /jobs
   # GET /jobs.json
   def index
     @jobs = Job.all
@@ -15,13 +16,17 @@ class JobsController < ApplicationController
   # GET /jobs/new
   def new
     @job = Job.new
-  end  
+    @job.workflow = Workflow.find(params[:workflow_id])
+  end
 
   # POST /jobs
   # POST /jobs.json
   def create
     @job = Job.new(job_params)
 
+    @job.options = clean_job_options
+    @job.inputs = clean_job_inputs
+    
     respond_to do |format|
       if @job.save
         format.html { redirect_to @job, notice: 'Job was successfully created.' }
@@ -38,6 +43,11 @@ class JobsController < ApplicationController
   def update
     respond_to do |format|
       if @job.update(job_params)
+        # Clean params
+        @job.options = clean_job_options
+        @job.inputs = clean_job_inputs
+        @job.save
+        # Start workers
         format.html { redirect_to @job, notice: 'Job was successfully updated.' }
         format.json { render :show, status: :ok, location: @job }
       else
@@ -65,6 +75,23 @@ class JobsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_params
-      params.require(:job).permit(:inputs, :options)
+      params.require(:job).permit(:workflow_id, :inputs, :options)
     end
+
+    def clean_job_options
+      begin
+        JSON.parse(params['job']['options'])
+      rescue
+        {}
+      end
+    end
+
+    def clean_job_inputs
+      begin
+        JSON.parse(params['job']['inputs'])
+      rescue
+        {}
+      end
+    end
+    
 end

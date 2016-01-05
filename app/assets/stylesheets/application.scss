@@ -3,8 +3,8 @@
 //Import bootstrap-sprockets
 @import "bootstrap-sprockets";
 
-// Import cerulean variables
-@import "bootswatch/cerulean/variables";
+// Import theme variables
+@import "bootswatch/cosmo/variables";
 
 // Then bootstrap itself
 @import "bootstrap";
@@ -46,7 +46,7 @@ body { padding-top: 60px;
 }
 
 // And finally bootswatch style itself
-@import "bootswatch/cerulean/bootswatch";
+@import "bootswatch/cosmo/bootswatch";
 
 // Whatever application styles you have go last
 // @import "base";

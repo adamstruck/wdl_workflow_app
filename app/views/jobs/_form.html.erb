@@ -1,4 +1,4 @@
-<%= form_for(@job, html: { class: 'form-horizontal' }) do |f| %>
+<%= form_for([@job.workflow, @job], html: { class: 'form-horizontal' }) do |f| %>
 
     <fieldset>
 
@@ -18,25 +18,32 @@
     
     <div class='form-group'>
       <label class="col-lg-2 control-label">Workflow</label>
-      <div class="col-lg-10 form-control">
-        <%= f.collection_select(:workflow_id, Workflow.all, :id, :name) %>
+      <br>
+      <div class="col-lg-10 well well-sm">
+        <%= @job.workflow.name %>
       </div>
     </div>
     
     <div class='form-group'>
-      <label class="col-lg-2 control-label">Inputs</label>      
-      <div class="col-lg-2 control-label">
-      </div>
-      <div class="col-lg-10">          
+      <label class="col-lg-2 control-label">Inputs</label>
+      <br>
+      <div class="col-lg-10 well well-sm">
+        <% @job.workflow.inputs.each do |key, value| %>
+          <label><%= key %></label>
+          <%= text_field "job[inputs][" + key.to_s + "]", nil, placeholder: "#{value}", class: "form-control" %>
+        <% end %>
       </div>
     </div>
 
     <div class='form-group'>
-      <label class="col-lg-2 control-label">Options</label>      
-      <div class="col-lg-2 control-label">
-      </div>
-      <div class="col-lg-10">          
-      </div>            
+      <label class="col-lg-2 control-label">Options</label>
+      <br>
+      <div class="col-lg-10 well well-sm">        
+        <% @job.workflow.options.each do |key, value| %>
+          <label><%= key %></label>
+          <%= text_field_tag "job[options][" + key.to_s + "]", nil, placeholder: "#{value}", class: "form-control"%>
+        <% end %>
+      </div>        
     </div>
 
     <div class="form-group">

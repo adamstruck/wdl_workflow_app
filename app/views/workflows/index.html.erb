@@ -31,7 +31,7 @@
         <% end %>
         <td><%= workflow.inputs %></td>
         <td><%= workflow.options %></td>
-        <td><%= link_to 'Run', workflow %></td>
+        <td><%= link_to 'Run', new_workflow_job_path(workflow) %></td>
         <td><%= link_to 'Show', workflow %></td>
         <td><%= link_to 'Edit', edit_workflow_path(workflow) %></td>
       </tr>

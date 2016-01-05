@@ -1,6 +1,17 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Name:</strong>
+  <pre><%= @workflow.name %></pre>
+</p>
+
+<p>
+  <strong>Tags:</strong>
+  <pre><%= @workflow.tags %></pre>
+</p>
+
+
+<p>
   <strong>Wdl source:</strong>
   <pre><%= @workflow.wdl_source %></pre>
 </p>
@@ -22,22 +33,19 @@
 
 <p>
   <strong>Inputs:</strong>
-  <% if @workflow.inputs == "{}" %>
-    <pre><%= @workflow.inputs %></pre>
-  <% else %>
-   <pre><%= JSON.pretty_generate(JSON.parse(@workflow.inputs.to_json)) %></pre>
-  <% end %>
+  <pre><%= JSON.pretty_generate(JSON.parse(@workflow.inputs.to_json)) %></pre>  
 </p>
 
 <p>
   <strong>Options:</strong>
-  <% if @workflow.options == "{}" %>
-    <pre><%= @workflow.options %></pre>
-  <% else %>
-   <pre><%= JSON.pretty_generate(JSON.parse(@workflow.options.to_json)) %></pre>
-  <% end %>
+  <pre><%= JSON.pretty_generate(JSON.parse(@workflow.options.to_json)) %></pre>  
 </p>
 
-<%= link_to 'Run', @workflow, class: 'btn btn-primary' %>
-<%= link_to 'Edit', edit_workflow_path(@workflow), class: 'btn btn-default' %>
-<%= link_to 'Destroy', @workflow, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+<br>
+
+<div>
+  <%= link_to 'Run', new_workflow_job_path(@workflow), class: 'btn btn-default btn-lg' %>
+  <%= link_to 'Edit', edit_workflow_path(@workflow), class: 'btn btn-default btn-lg'%>
+  <%= link_to 'Destroy', @workflow, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-lg'%>
+  <%= link_to 'Jobs', workflow_jobs_path(@workflow), class: 'btn btn-default btn-lg' %>
+</div>

@@ -18,13 +18,13 @@ ActiveRecord::Schema.define(version: 20160105000813) do
 
   create_table "jobs", force: :cascade do |t|
     t.integer  "workflow_id"
-    t.text     "inputs"
-    t.text     "options"
+    t.text     "inputs",      default: "--- {}\n"
+    t.text     "options",     default: "--- {}\n"
     t.datetime "run_at"
     t.string   "status"
     t.text     "results"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   add_index "jobs", ["workflow_id"], name: "index_jobs_on_workflow_id", using: :btree
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20160105000813) do
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.string   "name"
-    t.text     "tags"
+    t.text     "tags",       default: "--- []\n"
   end
 
 end

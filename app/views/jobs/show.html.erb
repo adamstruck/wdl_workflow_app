@@ -1,33 +1,37 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Wdl:</strong>
-  <pre><%= @job.wdl_id %><\pre>
+  <strong>Workflow:</strong>
+  <pre><%= @job.workflow_id %></pre>
 </p>
 
 <p>
   <strong>Inputs:</strong>
-  <pre><%= @job.inputs %><\pre>
+  <pre><%= JSON.pretty_generate(JSON.parse(@job.inputs.to_json)) %></pre>
 </p>
 
 <p>
   <strong>Options:</strong>
-  <pre><%= @job.options %><\pre>
+  <pre><%= JSON.pretty_generate(JSON.parse(@job.options.to_json)) %></pre>
 </p>
 
 <p>
   <strong>Run at:</strong>
-  <pre><%= @job.run_at %><\pre>
+  <pre><%= @job.run_at %></pre>
 </p>
 
 <p>
   <strong>Status:</strong>
-  <pre><%= @job.status %><\pre>
+  <pre><%= @job.status %></pre>
 </p>
 
 <p>
   <strong>Results:</strong>
-  <pre><%= @job.results %><\pre>
+  <pre><%= @job.results %></pre>
 </p>
 
-<%= link_to 'Destroy', @job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+<br>
+
+<div>
+  <%= link_to 'Destroy', @job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-lg' %>
+</div>

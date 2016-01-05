@@ -1,3 +1,13 @@
 <h1>Editing Workflow</h1>
 
 <%= render 'form' %>
+
+<div class="form-horizontal">
+  <fieldset>
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">  
+        <%= link_to 'Destroy', @workflow, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'%>
+      </div>
+    </div>
+  </fieldset>
+</div>

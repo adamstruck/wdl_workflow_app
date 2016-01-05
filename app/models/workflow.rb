@@ -5,6 +5,8 @@ class Workflow < ActiveRecord::Base
   serialize :options
   serialize :tags
   
+  validates :name, :wdl_source, presence: true
+  
   def cromwell_validate!
     file = Tempfile.open('wdl_workflow', Rails.root.join('tmp'))
     begin 
@@ -38,7 +40,7 @@ class Workflow < ActiveRecord::Base
     end    
     output = `cromwell inputs #{file.path}`
     unless output.include? "cromwell.parser.WdlParser$SyntaxError: ERROR"
-      update(inputs: eval(output))
+      update(inputs: JSON.parse(output))
     end
   end
 
