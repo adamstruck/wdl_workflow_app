@@ -3,7 +3,8 @@ class Workflow < ActiveRecord::Base
   
   serialize :inputs
   serialize :options
-
+  serialize :tags
+  
   def cromwell_validate!
     file = Tempfile.open('wdl_workflow', Rails.root.join('tmp'))
     begin 
