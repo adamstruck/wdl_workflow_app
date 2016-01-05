@@ -2,33 +2,33 @@
 
 <p>
   <strong>Wdl:</strong>
-  <%= @job.wdl_id %>
+  <pre><%= @job.wdl_id %><\pre>
 </p>
 
 <p>
   <strong>Inputs:</strong>
-  <%= @job.inputs %>
+  <pre><%= @job.inputs %><\pre>
 </p>
 
 <p>
   <strong>Options:</strong>
-  <%= @job.options %>
+  <pre><%= @job.options %><\pre>
 </p>
 
 <p>
   <strong>Run at:</strong>
-  <%= @job.run_at %>
+  <pre><%= @job.run_at %><\pre>
 </p>
 
 <p>
   <strong>Status:</strong>
-  <%= @job.status %>
+  <pre><%= @job.status %><\pre>
 </p>
 
 <p>
   <strong>Results:</strong>
-  <%= @job.results %>
+  <pre><%= @job.results %><\pre>
 </p>
 
-<%= link_to 'Edit', edit_job_path(@job) %> |
-<%= link_to 'Back', jobs_path %>
+<%= link_to 'Edit', edit_job_path(@job), class: 'btn btn-primary' %> |
+<%= link_to 'Destroy', @job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
