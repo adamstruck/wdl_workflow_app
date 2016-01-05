@@ -1,4 +1,6 @@
 class Workflow < ActiveRecord::Base
+  has_many :jobs, dependent: :destroy
+  
   serialize :inputs
   serialize :options
 
