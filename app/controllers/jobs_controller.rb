@@ -3,16 +3,19 @@ class JobsController < ApplicationController
   before_action :set_job, only: [:show, :update, :destroy]
 
   # GET /jobs
-  # GET /jobs.json
+  # GET /workflows/:id/jobs
   def index
-    # @jobs = Job.all
-    @jobs = Job.all
+    begin
+      @workflow  = Workflow.find(params[:workflow_id])
+      @jobs = @workflow.jobs
+    rescue
+      @jobs = Job.all
+    end
   end
 
   # GET /jobs/1
-  # GET /workflow/:id/jobs/1
   # GET /jobs/1.json
-  def show    
+  def show
   end
 
   # GET /jobs/new
@@ -22,7 +25,7 @@ class JobsController < ApplicationController
   end
 
   # POST /jobs
-  # POST /workflow/:id/jobs/
+  # POST /workflows/:id/jobs/
   # POST /jobs.json
   def create
     @job = Job.new(job_params)
@@ -33,8 +36,8 @@ class JobsController < ApplicationController
 
     respond_to do |format|
       if @job.save
-        format.html { redirect_to @job, notice: 'Job was successfully created.' }
-        format.json { render :show, status: :created, location: @job }
+        format.html { redirect_to workflow_jobs_url(@job), notice: 'Job was successfully created.' }
+        format.json { render :show, status: :created, location: workflow_jobs_url(@job) }
       else
         format.html { render :new }
         format.json { render json: @job.errors, status: :unprocessable_entity }
@@ -43,7 +46,6 @@ class JobsController < ApplicationController
   end
 
   # PATCH/PUT /jobs/1
-  # PATCH/PUT /workflow/:id/jobs/1
   # PATCH/PUT /jobs/1.json
   def update
     respond_to do |format|
@@ -63,7 +65,6 @@ class JobsController < ApplicationController
   end
 
   # DELETE /jobs/1
-  # DELETE /workflow/:id/jobs/1
   # DELETE /jobs/1.json
   def destroy
     @job.destroy
