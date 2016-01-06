@@ -2,15 +2,17 @@ class JobsController < ApplicationController
 
   before_action :set_job, only: [:show, :update, :destroy]
 
-    # GET /jobs
+  # GET /jobs
   # GET /jobs.json
   def index
+    # @jobs = Job.all
     @jobs = Job.all
   end
 
   # GET /jobs/1
+  # GET /workflow/:id/jobs/1
   # GET /jobs/1.json
-  def show
+  def show    
   end
 
   # GET /jobs/new
@@ -20,13 +22,15 @@ class JobsController < ApplicationController
   end
 
   # POST /jobs
+  # POST /workflow/:id/jobs/
   # POST /jobs.json
   def create
     @job = Job.new(job_params)
 
+    @job.workflow_id = params['workflow_id']
     @job.options = clean_job_options
     @job.inputs = clean_job_inputs
-    
+
     respond_to do |format|
       if @job.save
         format.html { redirect_to @job, notice: 'Job was successfully created.' }
@@ -39,13 +43,14 @@ class JobsController < ApplicationController
   end
 
   # PATCH/PUT /jobs/1
+  # PATCH/PUT /workflow/:id/jobs/1
   # PATCH/PUT /jobs/1.json
   def update
     respond_to do |format|
       if @job.update(job_params)
         # Clean params
-        @job.options = clean_job_options
         @job.inputs = clean_job_inputs
+        @job.options = clean_job_options
         @job.save
         # Start workers
         format.html { redirect_to @job, notice: 'Job was successfully updated.' }
@@ -58,6 +63,7 @@ class JobsController < ApplicationController
   end
 
   # DELETE /jobs/1
+  # DELETE /workflow/:id/jobs/1
   # DELETE /jobs/1.json
   def destroy
     @job.destroy
@@ -78,17 +84,17 @@ class JobsController < ApplicationController
       params.require(:job).permit(:workflow_id, :inputs, :options)
     end
 
-    def clean_job_options
+    def clean_job_inputs
       begin
-        JSON.parse(params['job']['options'])
+        JSON.parse(params['job']['inputs'].to_json)
       rescue
         {}
       end
     end
 
-    def clean_job_inputs
+    def clean_job_options
       begin
-        JSON.parse(params['job']['inputs'])
+        JSON.parse(params['job']['options'].to_json)
       rescue
         {}
       end
