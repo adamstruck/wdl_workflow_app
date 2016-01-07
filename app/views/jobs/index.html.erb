@@ -8,9 +8,12 @@
       <th>Workflow</th>
       <th>Inputs</th>
       <th>Options</th>
-      <th>Run at</th>
+      <th>Job process uuid</th>
+      <th>Started at</th>
       <th>Status</th>
-      <th>Results</th>
+      <th>Completed at</th>
+      <th>Outputs</th>
+      <th>Metadata</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -21,9 +24,12 @@
         <td><%= job.workflow_id %></td>
         <td><%= job.inputs %></td>
         <td><%= job.options %></td>
-        <td><%= job.run_at %></td>
+        <td><%= job.job_process_uuid %></td>
+        <td><%= job.started_at %></td>        
         <td><%= job.status %></td>
-        <td><%= job.results %></td>
+        <td><%= job.completed_at %></td>
+        <td><%= job.outputs %></td>
+        <td><%= job.metadata %></td>
         <td><%= link_to 'Show', job %></td>
       </tr>
     <% end %>

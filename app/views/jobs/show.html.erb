@@ -16,8 +16,8 @@
 </p>
 
 <p>
-  <strong>Run at:</strong>
-  <pre><%= @job.run_at %></pre>
+  <strong>Started at:</strong>
+  <pre><%= @job.started_at %></pre>
 </p>
 
 <p>
@@ -26,8 +26,18 @@
 </p>
 
 <p>
-  <strong>Results:</strong>
-  <pre><%= @job.results %></pre>
+  <strong>Completed at:</strong>
+  <pre><%= @job.completed_at %></pre>
+</p>
+
+<p>
+  <strong>Outputs:</strong>
+  <pre><%= @job.outputs %></pre>
+</p>
+
+<p>
+  <strong>Metadata:</strong>
+  <pre><%= @job.metadata %></pre>
 </p>
 
 <br>

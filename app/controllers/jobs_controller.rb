@@ -36,6 +36,9 @@ class JobsController < ApplicationController
 
     respond_to do |format|
       if @job.save
+        # Start workers        
+        RunJobWorker.perform_async(@job.id)
+        CheckJobStatusWorker.perform_async(@job.id)        
         format.html { redirect_to workflow_jobs_url(@job), notice: 'Job was successfully created.' }
         format.json { render :show, status: :created, location: workflow_jobs_url(@job) }
       else
@@ -50,11 +53,11 @@ class JobsController < ApplicationController
   def update
     respond_to do |format|
       if @job.update(job_params)
-        # Clean params
-        @job.inputs = clean_job_inputs
-        @job.options = clean_job_options
-        @job.save
         # Start workers
+        if @job.status == "Succeeded"
+          FetchJobOutputs.perform_async(@job.id)
+          FetchJobMetadata.perform_async(@job.id)
+        end
         format.html { redirect_to @job, notice: 'Job was successfully updated.' }
         format.json { render :show, status: :ok, location: @job }
       else
@@ -75,30 +78,30 @@ class JobsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_job
-      @job = Job.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_job
+    @job = Job.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def job_params
-      params.require(:job).permit(:workflow_id, :inputs, :options)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def job_params
+    params.require(:job).permit(:workflow_id, :inputs, :options)
+  end
 
-    def clean_job_inputs
-      begin
-        JSON.parse(params['job']['inputs'].to_json)
-      rescue
-        {}
-      end
+  def clean_job_inputs
+    begin
+      JSON.parse(params['job']['inputs'].to_json)
+    rescue
+      {}
     end
+  end
 
-    def clean_job_options
-      begin
-        JSON.parse(params['job']['options'].to_json)
-      rescue
-        {}
-      end
+  def clean_job_options
+    begin
+      JSON.parse(params['job']['options'].to_json)
+    rescue
+      {}
     end
+  end
     
 end

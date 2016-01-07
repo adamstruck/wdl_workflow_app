@@ -3,8 +3,6 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use bootstrap
 gem 'bootstrap-sass', '~> 3.3.6'
 # Use bootswatch-rails for free theme
@@ -36,11 +34,19 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# gem 'awesome_print', '~> 1.6.1'
+# Use HTTParty for REST requests
+# gem 'httparty', '~> 0.13.7'
+
+# Use rest-client forA requests
+gem 'rest-client', '~> 1.8.0'
+
+# Use JSON for serializing form input
 gem 'json', '~> 1.8.3'
 
-# Used for background worker tasks
+# Use postgreSQL as the database for Active Record
 gem 'pg', '~> 0.18.4'
+
+# Use SideKiq for queuing up background worker tasks
 gem 'sidekiq', '~> 4.0.1'
 
 group :development, :test do

@@ -11,20 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160105000813) do
+ActiveRecord::Schema.define(version: 20160106225632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "jobs", force: :cascade do |t|
     t.integer  "workflow_id"
-    t.text     "inputs",      default: "--- {}\n"
-    t.text     "options",     default: "--- {}\n"
-    t.datetime "run_at"
+    t.text     "inputs",           default: "--- {}\n"
+    t.text     "options",          default: "--- {}\n"
     t.string   "status"
-    t.text     "results"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.string   "job_process_uuid"
+    t.text     "outputs",          default: "--- {}\n"
+    t.text     "metadata",         default: "--- {}\n"
+    t.datetime "completed_at"
+    t.datetime "started_at"
   end
 
   add_index "jobs", ["workflow_id"], name: "index_jobs_on_workflow_id", using: :btree
