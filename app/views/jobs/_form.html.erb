@@ -1,4 +1,5 @@
-<div class="panel panel-default col-lg-8" style="padding: 2%">  
+<div class="container col-lg-6" >
+<div class="panel panel-default" style="padding: 5%">  
   <%= form_for([@job.workflow, @job], html: { class: 'form-horizontal' }) do |f| %>
 
     <fieldset>
@@ -59,7 +60,11 @@
     </fieldset>
   <% end %>
 </div>
+</div>
 
-<div class="panel panel-default col-lg-4" style="padding: 2%">
+<div class="container col-lg-6">
+<div class="panel panel-default" style="padding: 5%">
   <pre><%= @job.workflow.html.html_safe %></pre>
 </div>
+</div>
+
