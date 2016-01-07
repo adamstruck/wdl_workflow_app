@@ -21,6 +21,12 @@
 </p>
 
 <p>
+  <strong>Started at:</strong>
+  <pre><%= @job.job_process_uuid %></pre>
+</p>
+
+
+<p>
   <strong>Status:</strong>
   <pre><%= @job.status %></pre>
 </p>
@@ -32,12 +38,12 @@
 
 <p>
   <strong>Outputs:</strong>
-  <pre><%= @job.outputs %></pre>
+  <pre><%= JSON.pretty_generate(JSON.parse(@job.outputs.to_json)) %></pre>
 </p>
 
 <p>
   <strong>Metadata:</strong>
-  <pre><%= @job.metadata %></pre>
+  <pre><%= JSON.pretty_generate(JSON.parse(@job.metadata.to_json)) %></pre>
 </p>
 
 <br>

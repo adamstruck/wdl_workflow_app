@@ -22,14 +22,14 @@
     <% @jobs.each do |job| %>
       <tr>
         <td><%= job.workflow_id %></td>
-        <td><%= job.inputs %></td>
-        <td><%= job.options %></td>
+        <td><%= JSON.pretty_generate(JSON.parse(job.inputs.to_json)) %></td>
+        <td><%= JSON.pretty_generate(JSON.parse(job.options.to_json)) %></td>
         <td><%= job.job_process_uuid %></td>
         <td><%= job.started_at %></td>        
         <td><%= job.status %></td>
         <td><%= job.completed_at %></td>
-        <td><%= job.outputs %></td>
-        <td><%= job.metadata %></td>
+        <td><%= JSON.pretty_generate(JSON.parse(job.outputs.to_json)) %></td>
+        <td><%= JSON.pretty_generate(JSON.parse(job.metadata.to_json)) %></td>
         <td><%= link_to 'Show', job %></td>
       </tr>
     <% end %>

@@ -33,7 +33,7 @@ class Job < ActiveRecord::Base
   end
   
   def fetch_outputs!
-    response = RestClient.get("http://0.0.0.0:8000/api/workflows/v1/#{job_process_uuid}/results")
+    response = RestClient.get("http://0.0.0.0:8000/api/workflows/v1/#{job_process_uuid}/outputs")
     update(outputs: JSON.parse(response.body)['outputs'])
   end
   

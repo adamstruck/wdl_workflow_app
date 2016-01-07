@@ -29,8 +29,8 @@
         <% else %>
           <td><%= workflow.html.html_safe %></td>
         <% end %>
-        <td><%= workflow.inputs %></td>
-        <td><%= workflow.options %></td>
+        <td><%= JSON.pretty_generate(JSON.parse(workflow.inputs.to_json)) %></td>
+        <td><%= JSON.pretty_generate(JSON.parse(workflow.options.to_json)) %></td>
         <td><%= link_to 'Run', new_workflow_job_path(workflow) %></td>
         <td><%= link_to 'Show', workflow %></td>
         <td><%= link_to 'Edit', edit_workflow_path(workflow) %></td>
