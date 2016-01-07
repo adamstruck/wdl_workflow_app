@@ -1,4 +1,0 @@
-#!/bin/sh
-cd cromwell-executions/test/b3c2f51a-b00d-4708-8410-2fc6e5838be5/call-hello
-echo 'hello String!'
-echo $? > rc
