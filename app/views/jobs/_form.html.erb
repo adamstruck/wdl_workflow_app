@@ -33,7 +33,7 @@
         <div class="col-lg-10 well well-sm">
           <% @job.workflow.inputs.each do |key, value| %>
             <label><%= key %></label>
-            <%= text_area "job[inputs][" + key.to_s + "]", nil, placeholder: "#{value}", rows: 1, class: "form-control" %>
+            <%= text_area_tag "job[inputs][#{key.to_s}]", nil, placeholder: "#{value}", rows: 1, class: "form-control" %>
           <% end %>
         </div>
       </div>
@@ -43,8 +43,8 @@
         <br>
         <div class="col-lg-10 well well-sm">        
           <% @job.workflow.options.each do |key, value| %>
-            <label><%= key %></label>
-            <%= text_area "job[options][" + key.to_s + "]", nil, placeholder: "#{value}", rows: 1, class: "form-control"%>
+            <label><%= key %></label>            
+            <%= text_area_tag "job[options][#{key.to_s}]", nil, placeholder: "#{value}", rows: 1, class: "form-control"%>
           <% end %>
         </div>        
       </div>

@@ -22,11 +22,8 @@ class Job < ActiveRecord::Base
   def check_status!
     response = RestClient.get("http://0.0.0.0:8000/api/workflows/v1/#{job_process_uuid}/status")
     update(status: JSON.parse(response.body)['status'])
-    if status == "Succeeded"
+    if status == "Succeeded"      
       update(completed_at: response.headers[:date].to_datetime)
-    else
-      sleep 15
-      raise "Job is running..."
     end
   end
 

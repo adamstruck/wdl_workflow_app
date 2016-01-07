@@ -3,7 +3,5 @@ class CheckJobStatusWorker
 
   def perform(job_id)    
     job = Job.find(job_id)
-    job.check_status!
-  end
-  
+    job.check_status!    
 end

@@ -90,7 +90,11 @@ class JobsController < ApplicationController
 
   def clean_job_inputs
     begin
-      JSON.parse(params['job']['inputs'].to_json)
+      if params['job']['inputs'].nil?
+        {}
+      else
+        params['job']['inputs']
+      end      
     rescue
       {}
     end
@@ -98,7 +102,11 @@ class JobsController < ApplicationController
 
   def clean_job_options
     begin
-      JSON.parse(params['job']['options'].to_json)
+      if params['job']['options'].nil?
+        {}
+      else
+        params['job']['options']
+      end
     rescue
       {}
     end
