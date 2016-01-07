@@ -38,7 +38,6 @@ class JobsController < ApplicationController
       if @job.save
         # Start workers        
         RunJobWorker.perform_async(@job.id)
-        CheckJobStatusWorker.perform_async(@job.id)        
         format.html { redirect_to workflow_jobs_url(@job), notice: 'Job was successfully created.' }
         format.json { render :show, status: :created, location: workflow_jobs_url(@job) }
       else
@@ -53,11 +52,6 @@ class JobsController < ApplicationController
   def update
     respond_to do |format|
       if @job.update(job_params)
-        # Start workers
-        if @job.status == "Succeeded"
-          FetchJobOutputs.perform_async(@job.id)
-          FetchJobMetadata.perform_async(@job.id)
-        end
         format.html { redirect_to @job, notice: 'Job was successfully updated.' }
         format.json { render :show, status: :ok, location: @job }
       else

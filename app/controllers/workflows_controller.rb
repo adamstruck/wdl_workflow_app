@@ -31,9 +31,7 @@ class WorkflowsController < ApplicationController
 
     respond_to do |format|
       if @workflow.save
-        ValidateWorkflowWorker.perform_async(@workflow.id)
-        CreateWorkflowHtmlWorker.perform_async(@workflow.id)        
-        CreateWorkflowInputsTemplateWorker.perform_async(@workflow.id)
+        ProcessWorkflowWorker.perform_async(@workflow.id)        
         format.html { redirect_to @workflow, notice: 'Workflow was successfully created.' }
         format.json { render :show, status: :created, location: @workflow }
       else
@@ -53,9 +51,7 @@ class WorkflowsController < ApplicationController
         @workflow.tags = clean_workflow_tags
         @workflow.save
         # Start workers
-        ValidateWorkflowWorker.perform_async(@workflow.id)
-        CreateWorkflowHtmlWorker.perform_async(@workflow.id)
-        CreateWorkflowInputsTemplateWorker.perform_async(@workflow.id)        
+        ProcessWorkflowWorker.perform_async(@workflow.id)        
         format.html { redirect_to @workflow, notice: 'Workflow was successfully updated.' }
         format.json { render :show, status: :ok, location: @workflow }
       else
