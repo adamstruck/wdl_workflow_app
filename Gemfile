@@ -51,8 +51,10 @@ gem 'sidekiq', '~> 4.0.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+  gem 'byebug', '~> 8.2.1'
   gem 'rspec-rails', '~> 3.4.0'
+  gem 'factory_girl_rails', '~> 4.5.0'
+  gem 'faker', '~> 1.6.1'
 end
 
 group :development do
