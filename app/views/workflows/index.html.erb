@@ -19,21 +19,21 @@
 
   <tbody style='white-space: pre'>
     <% @workflows.each do |workflow| %>
-      <tr>
-        <td><%= workflow.name %></td>
-        <td><%= workflow.tags %></td>
-        <td><%= workflow.wdl_source %></td>
-        <td><%= workflow.is_valid %></td>
+      <tr class = "minimized_table_cell">
+        <td><div><%= workflow.name %></div></td>
+        <td><div><%= workflow.tags %></div></td>
+        <td><div><%= workflow.wdl_source %></div></td>
+        <td><div><%= workflow.is_valid %></div></td>
         <% if workflow.html.nil? %>
-          <td><%= workflow.html %></td>
+          <td><div><%= workflow.html %></div></td>
         <% else %>
-          <td><%= workflow.html.html_safe %></td>
+          <td><div><%= workflow.html.html_safe %></div></td>
         <% end %>
-        <td><%= JSON.pretty_generate(JSON.parse(workflow.inputs.to_json)) %></td>
-        <td><%= JSON.pretty_generate(JSON.parse(workflow.options.to_json)) %></td>
-        <td><%= link_to 'Run', new_workflow_job_path(workflow) %></td>
-        <td><%= link_to 'Show', workflow %></td>
-        <td><%= link_to 'Edit', edit_workflow_path(workflow) %></td>
+        <td><div><%= JSON.pretty_generate(JSON.parse(workflow.inputs.to_json)) %></div></td>
+        <td><div><%= JSON.pretty_generate(JSON.parse(workflow.options.to_json)) %></div></td>
+        <td><div><%= link_to 'Run', new_workflow_job_path(workflow) %></div></td>
+        <td><div><%= link_to 'Show', workflow %></div></td>
+        <td><div><%= link_to 'Edit', edit_workflow_path(workflow) %></div></td>
       </tr>
     <% end %>
   </tbody>

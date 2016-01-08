@@ -2,30 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// WDL syntax highlighting
 .keyword {
-  color: #0066FF;
+  color: #ffa31a;
 }
 
 .name {
-  color: #0066FF;
+  color: #000000;
 }
 
 .type {
-  color: #0066FF;
+  color: #0099ff;
 }
 
 .variable {
-  color: #0066FF;
+  color: #669900;
 }
 
 .section {
-  color: #0066FF;
+  color: #ffa31a;
 }
 
 .command {
-  color: #0066FF;
+  color: #000000;
 }
 
 .function {
-  color: #0066FF;
+  color: #ff00ff;
 }

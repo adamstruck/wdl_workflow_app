@@ -16,37 +16,16 @@ body { padding-top: 60px;
        padding-right: 10px;       
      }
 
-// WDL syntax highlighting
-.keyword {
-  color: #ffa31a;
-}
-
-.name {
-  color: #000000;
-}
-
-.type {
-  color: #0099ff;
-}
-
-.variable {
-  color: #669900;
-}
-
-.section {
-  color: #ffa31a;
-}
-
-.command {
-  color: #000000;
-}
-
-.function {
-  color: #ff00ff;
+tr.minimized_table_cell * {  
+  max-height: 100px;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis
 }
 
 // And finally bootswatch style itself
 @import "bootswatch/cosmo/bootswatch";
 
 // Whatever application styles you have go last
-// @import "base";
+@import "workflows";
+@import "jobs";

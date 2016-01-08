@@ -20,17 +20,17 @@
 
   <tbody style='white-space: pre'>
     <% @jobs.each do |job| %>
-      <tr>
-        <td><%= job.workflow_id %></td>
-        <td><%= JSON.pretty_generate(JSON.parse(job.inputs.to_json)) %></td>
-        <td><%= JSON.pretty_generate(JSON.parse(job.options.to_json)) %></td>
-        <td><%= job.job_process_uuid %></td>
-        <td><%= job.started_at %></td>        
-        <td><%= job.status %></td>
-        <td><%= job.completed_at %></td>
-        <td><%= JSON.pretty_generate(JSON.parse(job.outputs.to_json)) %></td>
-        <td><%= JSON.pretty_generate(JSON.parse(job.metadata.to_json)) %></td>
-        <td><%= link_to 'Show', job %></td>
+      <tr class="minimized_table_cell">
+        <td><div><%= job.workflow_id %></div></td>
+        <td><div><%= JSON.pretty_generate(JSON.parse(job.inputs.to_json)) %></div></td>
+        <td><div><%= JSON.pretty_generate(JSON.parse(job.options.to_json)) %></div></td>
+        <td><div><%= job.job_process_uuid %></div></td>
+        <td><div><%= job.started_at %></div></td>        
+        <td><div><%= job.status %></div></td>
+        <td><div><%= job.completed_at %></div></td>
+        <td><div><%= JSON.pretty_generate(JSON.parse(job.outputs.to_json)) %></div></td>
+        <td><div><%= JSON.pretty_generate(JSON.parse(job.metadata.to_json)) %></div></td>
+        <td><div><%= link_to 'Show', job %></div></td>
       </tr>
     <% end %>
   </tbody>
