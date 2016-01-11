@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use bootstrap
@@ -33,9 +32,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
-# Use HTTParty for REST requests
-# gem 'httparty', '~> 0.13.7'
 
 # Use rest-client forA requests
 gem 'rest-client', '~> 1.8.0'
