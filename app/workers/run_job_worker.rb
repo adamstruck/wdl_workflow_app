@@ -5,7 +5,7 @@ class RunJobWorker
     job = Job.find(job_id)
     job.run!
 
-    until job.status == "Succeeded"
+    until job.status == "Succeeded" || job.status == "Failed"
       job.check_status!
       sleep 10
     end
