@@ -27,3 +27,8 @@ From the project's root directory run:
 1. `bin/rails s` to start a rails server for this application at http://0.0.0.0:3000
 2. `bundle exec sidekiq` to kick off Sidekiq (http://sidekiq.org/) which is used for asyncronous execution of workers.
 3. `java -jar cromwell-0.14.jar server` to start a cromwell server at http://0.0.0.0:8000
+
+## Resources
+* WDL Specification - https://github.com/broadinstitute/wdl/blob/develop/SPEC.md
+* Cromwell - https://github.com/broadinstitute/cromwell
+
