@@ -1,0 +1,44 @@
+
+<%= grid(@jobs_grid, html: {class: "table table-striped table-hover", style: "white-space: pre"}) do |g|
+
+g.column name: 'Workflow ID', attribute: 'workflow_id' do |job|
+job.workflow_id
+end
+
+g.column  name: 'Inputs', attribute: 'inputs' do |job|
+JSON.pretty_generate(JSON.parse(job.inputs.to_json))
+end
+
+g.column name: 'Options', attribute: 'options' do |job|
+JSON.pretty_generate(JSON.parse(job.options.to_json))
+end
+
+g.column name: 'Job UUID', attribute: 'job_process_uuid' do |job|
+job.job_process_uuid
+end
+
+g.column name: 'Started at' do |job|
+job.started_at.to_s(:short)
+end
+
+g.column name: 'Status', attribute: 'status', custom_filter: :auto  do |job|
+job.status? ? "Submitted" : "Succeeded"
+end
+
+g.column name: 'Completed at' do |job|
+job.completed_at.to_s(:short)
+end
+
+g.column name: 'Outputs', attribute: 'outputs' do |job|
+JSON.pretty_generate(JSON.parse(job.outputs.to_json))
+end
+
+g.column name: 'Metadata', attribute: 'metadata' do |job|
+JSON.pretty_generate(JSON.parse(job.metadata.to_json))
+end
+
+g.column do |job|
+link_to('Show', job)
+end
+
+end -%>

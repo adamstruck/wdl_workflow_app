@@ -9,22 +9,29 @@
 // Then bootstrap itself
 @import "bootstrap";
 
+// And finally bootswatch style itself
+@import "bootswatch/cosmo/bootswatch";
+
+// wice-grid styles
+@import "wice_grid";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
 // Bootstrap body padding for fixed navbar
-body { padding-top: 60px;
-       padding-bottom: 10px;
-       padding-left: 10px;
-       padding-right: 10px;       
-     }
+body {
+  padding-top: 60px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;       
+}
 
 tr.minimized_table_cell * {  
   max-height: 100px;
   max-width: 200px;
+  min-width: 100px;
   overflow: hidden;
   text-overflow: ellipsis
 }
-
-// And finally bootswatch style itself
-@import "bootswatch/cosmo/bootswatch";
 
 // Whatever application styles you have go last
 @import "workflows";

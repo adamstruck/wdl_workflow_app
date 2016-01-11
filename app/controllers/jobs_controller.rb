@@ -11,6 +11,7 @@ class JobsController < ApplicationController
     rescue
       @jobs = Job.all
     end
+    @jobs_grid = initialize_grid(@jobs, order: 'id')
   end
 
   # GET /jobs/1

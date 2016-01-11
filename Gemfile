@@ -16,10 +16,16 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+gem 'sprockets', '~> 3.5.2'
+gem 'sprockets-rails', '~> 3.0.0'
+
+gem "wice_grid", '3.6.0.pre4'
+gem 'font-awesome-sass',  '~> 4.3'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+gem 'turbolinks', '~> 2.5.3'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -34,10 +40,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# Use HTTParty for REST requests
-# gem 'httparty', '~> 0.13.7'
-
-# Use rest-client forA requests
+# Use rest-client for http requests
 gem 'rest-client', '~> 1.8.0'
 
 # Use JSON for serializing form input
@@ -45,7 +48,6 @@ gem 'json', '~> 1.8.3'
 
 # Use postgreSQL as the database for Active Record
 gem 'pg', '~> 0.18.4'
-
 # Use SideKiq for queuing up background worker tasks
 gem 'sidekiq', '~> 4.0.1'
 

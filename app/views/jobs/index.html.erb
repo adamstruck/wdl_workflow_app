@@ -2,7 +2,7 @@
 
 <h1>Listing Jobs</h1>
 
-<table class="table table-striped table-hover">
+<table class="table table-striped table-hover sortable">
   <thead>
     <tr>
       <th>Workflow</th>
@@ -14,7 +14,7 @@
       <th>Completed at</th>
       <th>Outputs</th>
       <th>Metadata</th>
-      <th colspan="3"></th>
+      <th colspan="3" class="sorttable_nosort"></th>
     </tr>
   </thead>
 
@@ -35,3 +35,5 @@
     <% end %>
   </tbody>
 </table>
+
+<%= render 'grid' %>
