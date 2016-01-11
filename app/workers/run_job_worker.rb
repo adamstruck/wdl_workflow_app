@@ -4,13 +4,13 @@ class RunJobWorker
   def perform(job_id)
     job = Job.find(job_id)
     job.run!
-    job.check_status!
-    if job.status == "Succeeded"
-      job.fetch_outputs!
-      job.fetch_metadata!
-    else
+
+    until job.status == "Succeeded"
+      job.check_status!
       sleep 10
-      job.check_status!      
     end
+    
+    job.fetch_outputs!
+    job.fetch_metadata!
   end
 end
