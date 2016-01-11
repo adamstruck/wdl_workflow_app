@@ -21,7 +21,7 @@
   <tbody style='white-space: pre'>
     <% @jobs.each do |job| %>
       <tr class="minimized_table_cell">
-        <td><div><%= job.workflow_id %></div></td>
+        <td><div><strong>ID: </strong><%= Workflow.find(job.workflow_id).id %><br><strong>Name: </strong><%= Workflow.find(job.workflow_id).name %></div></td>
         <td><div><%= JSON.pretty_generate(JSON.parse(job.inputs.to_json)) %></div></td>
         <td><div><%= JSON.pretty_generate(JSON.parse(job.options.to_json)) %></div></td>
         <td><div><%= job.job_process_uuid %></div></td>

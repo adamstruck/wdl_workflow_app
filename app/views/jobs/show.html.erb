@@ -2,7 +2,7 @@
 
 <p>
   <strong>Workflow:</strong>
-  <pre><%= @job.workflow_id %></pre>
+  <pre><strong>ID: </strong><%= Workflow.find(@job.workflow_id).id %><br><strong>Name: </strong><%= Workflow.find(@job.workflow_id).name %></pre>  
 </p>
 
 <p>
