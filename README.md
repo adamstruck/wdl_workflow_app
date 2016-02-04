@@ -19,7 +19,8 @@ As a Researcher, I need to check the status and outputs of workflows run on the 
 
 ## Setup
 1. Clone this repository.
-2. Run `gem bundle install`
+2. Run `bundle install`
+3. Run `bin/rake db:drop db:create db:migrate`
 
 ## Startup
 From the project's root directory run:
@@ -29,6 +30,6 @@ From the project's root directory run:
 3. `java -jar cromwell-0.14.jar server` to start a cromwell server at http://0.0.0.0:8000
 
 ## Resources
-* WDL Specification - https://github.com/broadinstitute/wdl/blob/develop/SPEC.md
+* WDL Specification - https://github.com/broadinstitute/wdl/blob/master/SPEC.md
 * Cromwell - https://github.com/broadinstitute/cromwell
 
